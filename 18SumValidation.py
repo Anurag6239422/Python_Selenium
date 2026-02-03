@@ -26,13 +26,13 @@ driver.find_element(By.XPATH, "//img[@alt='Cart']").click()
 
 driver.find_element(By.XPATH, "//button[text()='PROCEED TO CHECKOUT']").click()
 
-amounts = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) [class='amount']").text
-
+amounts = driver.find_elements(By.CSS_SELECTOR, "tr td:nth-child(5) p")
 sum = 0
 
 for amount in amounts:
-    sum = sum + int(amount)
+    sum = sum + int(amount.text)
 
+print(sum)
 
 assert sum == int(driver.find_element(By.CSS_SELECTOR, "span[class='totAmt']").text)
 
