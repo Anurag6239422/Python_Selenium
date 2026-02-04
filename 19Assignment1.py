@@ -46,13 +46,13 @@ driver.find_element(By.CLASS_NAME, "promoCode").send_keys("rahulshettyacademy")
 driver.find_element(By.CLASS_NAME, "promoBtn").click()
 
 wait = WebDriverWait(driver, 10)
-wait.until(EC.presence_of_element_located((By.CLASS_NAME, "promoCode")))
+wait.until(EC.text_to_be_present_in_element((By.CLASS_NAME, "promoInfo"), "Code applied ..!"))
 
 sum = driver.find_element(By.CLASS_NAME, "totAmt").text
 
 discount = driver.find_element(By.CLASS_NAME, "discountAmt").text
 
-print(sum)
-print(discount)
+print("Total Cost of Vegetable : ", sum)
+print("Final Cost of Vegetable after Discount : ", discount)
 
-assert int(sum) > int(discount)
+assert sum > discount
