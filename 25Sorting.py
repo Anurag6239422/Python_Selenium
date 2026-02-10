@@ -21,6 +21,7 @@ driver.switch_to.window(windowsOpened[1])
 
 driver.find_element(By.XPATH, "//span[text()='Veg/fruit name']").click()
 
+
 veggie = driver.find_elements(By.XPATH, "//tr//td[1]")
 
 veggie_item = []
