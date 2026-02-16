@@ -12,16 +12,20 @@ def UpdateSheet(file_path, col_val, val, item):
     Dict = {}
 
     for i in range(1, sheet.max_column+1):
-        if sheet.cell(row = 1, column=i) == col_val:
-            Dict[col] = i
+        if sheet.cell(row = 1, column=i).value == col_val:
+            Dict["col"] = i
 
     for i in range(1, sheet.max_row+1):
         for j in range(1, sheet.max_column+1):
+            if sheet.cell(row=i, column=j).value == item:
+                Dict["row"] = i
+
+    sheet.cell(row=Dict["row"], column=Dict["col"]).value = val
+
+    book.save(file_path)
+
+
     
-
-
-
-
 file_path = r"C:\Users\anura_9posmze\Downloads\download.xlsx"
 
 col_val = input("On which column you want to change the value : ")
